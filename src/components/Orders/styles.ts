@@ -10,11 +10,11 @@ export const Container = styled.main`
     padding: 16px;
     box-sizing: border-box;
     max-height: fit-content;
+    height: 800px;
 
     @media (max-width: 768px) {
-        main {
-            flex-direction: column;
-            gap: 16px;
-        }
+        flex-direction: column;
+        gap: 16px;
+        height: auto;
     }
 `;

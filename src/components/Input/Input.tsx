@@ -10,15 +10,17 @@ interface InputProps {
 
 export const Input: React.FC<InputProps> = ({ label, placeholder, value, onChange }) => {
   return (
-    <InputContainer>
+    <>
       {label && <InputLabel>{label}</InputLabel>}
-      <StyledInput
-        type="text"
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        required
-      />
-    </InputContainer>
+      <InputContainer>
+        <StyledInput
+          type="text"
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          required
+        />
+      </InputContainer>
+    </>
   );
 };

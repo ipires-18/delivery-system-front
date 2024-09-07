@@ -6,6 +6,9 @@ export const CartContainer = styled.div`
   padding: 20px;
   max-height: 80vh;
   overflow-y: auto;
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
 `;
 
 export const EmptyCartMessage = styled.div`
@@ -15,6 +18,7 @@ export const EmptyCartMessage = styled.div`
   height: 200px;
   font-size: 18px;
   color: #555;
+  text-align: center;
 `;
 
 export const CartItem = styled.div`
@@ -25,6 +29,10 @@ export const CartItem = styled.div`
   margin-bottom: 20px;
   padding: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const ItemImage = styled.img`
@@ -32,6 +40,11 @@ export const ItemImage = styled.img`
   height: auto;
   border-radius: 4px;
   margin-right: 15px;
+  @media (max-width: 768px) {
+    max-width: 80px;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
 `;
 
 export const ItemHeader = styled.h2`
@@ -77,6 +90,10 @@ export const TotalContainer = styled.div`
   padding: 10px 0;
   border-top: 1px solid #ddd;
   margin-top: 20px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 export const TotalLabel = styled.h3`
@@ -92,13 +109,15 @@ export const TotalAmount = styled.p`
   color: #000;
 `;
 
-
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   margin-top: 10px;
   width: 100%;
   gap: 10px;
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 export const Button = styled.button<{ primary?: boolean }>`
@@ -108,11 +127,8 @@ export const Button = styled.button<{ primary?: boolean }>`
   cursor: pointer;
   font-size: 14px;
   transition: background-color 0.3s;
-
   background-color: ${(props) => (props.primary ? "#007bff" : "#cccccc")};
-  color: ${(props) => (props.primary ? "#ffffff" : "#000000")};;
-  transition: background-color 0.3s;
-
+  color: ${(props) => (props.primary ? "#ffffff" : "#000000")};
   &:hover {
     background-color: ${(props) => (props.primary ? "#45a049" : "#e53935")};
     color: #ffffff;
@@ -120,5 +136,9 @@ export const Button = styled.button<{ primary?: boolean }>`
 `;
 
 export const Wrapper = styled.div`
- width: 500px;
+  width: 100%;
+  max-width: 500px;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;

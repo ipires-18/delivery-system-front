@@ -59,8 +59,8 @@ export const Dialog: React.FC<ModalProps> = ({ isOpen, onClose, title, children 
           </ModalHeader>
           <ModalBody>
             <Input
-              label="Qual sua mesa?"
-              placeholder="Digite o número da mesa..."
+              label="Qual é o número da mesa?"
+              placeholder="Digite o número aqui..."
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
             />

@@ -21,6 +21,12 @@ export const ModalContent = styled.div`
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   position: relative;
   width: fit-content;
+
+  @media (max-width: 768px) {
+    width: 90%;
+    max-height: 80%;
+    overflow-y: auto;
+  }
 `;
 
 export const ModalHeader = styled.div`
@@ -40,6 +46,10 @@ export const ModalHeader = styled.div`
     font-size: 16px;
     cursor: pointer;
   }
+
+  @media (max-width: 768px) {
+    justify-content: space-between;
+  }
 `;
 
 export const ModalBody = styled.div`
@@ -50,6 +60,11 @@ export const ModalBody = styled.div`
   gap: 20px;
   padding: 20px 0;
   max-height: 500px;
+
+  @media (max-width: 768px) {
+    max-height: 400px;
+    padding: 10px 0;
+  }
 `;
 
 export const ModalFooter = styled.div`
@@ -58,18 +73,24 @@ export const ModalFooter = styled.div`
   border-top: 1px solid #eaeaea;
   padding-top: 10px;
   gap: 10px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 8px;
+  }
 `;
 
 export const Button = styled.button<{ primary?: boolean }>`
-  background-color: ${props => props.primary ? '#4CAF50' : '#f44336'};
+  background-color: ${(props) => (props.primary ? '#4CAF50' : '#f44336')};
+  border: ${(props) => (props.primary ? 'none' : '1px solid #ced4da')};
   color: #FFFFFF;
-  border: ${props => props.primary ? 'none' : '1px solid #ced4da'};
   padding: 10px 20px;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
 
-  &:hover {
-    background-color: #ced4da;
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 12px;
   }
 `;
