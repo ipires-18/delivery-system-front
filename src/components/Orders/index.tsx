@@ -9,7 +9,7 @@ import { Footer } from '../Footer/Footer';
 import { Loading } from '../Loading/Loading';
 
 export function Orders() {
-  const [orders, setOrders] = useState<Order[] | []>([]);
+  const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -17,14 +17,20 @@ export function Orders() {
       setOrders(data);
       setLoading(false);
     });
-  }, [orders, loading]);
-
+  }, []);
 
   useEffect(() => {
     const io = socketIo(import.meta.env.VITE_API, {
-      transports: ['websocket']
+      transports: ['websocket'],
     });
-    io.on('order@new', (order) => setOrders(prev => prev.concat(order)));
+
+    io.on('order@new', (order) => {
+      setOrders((prev) => [...prev, order]);
+    });
+
+    return () => {
+      io.disconnect();
+    };
   }, []);
 
   const waiting = orders.filter(({ status }) => status === 'WAITING');
@@ -36,23 +42,20 @@ export function Orders() {
   }
 
   function handleOrderStatusChange(orderId: string, status: Order['status']) {
-    setOrders((prev) => prev.map((order) => {
-      if (order._id !== orderId) return {
-        ...order,
-        status
-      };
-
-      return order;
-    }));
+    setOrders((prev) =>
+      prev.map((order) =>
+        order._id === orderId ? { ...order, status } : order
+      )
+    );
   }
 
   if (loading) {
-    return <Loading />; // Exibe o componente de loading enquanto carrega
+    return <Loading />;
   }
 
   return (
     <>
-      <Header title='Pedidos' subtitle='Acompanhe o pedido dos clientes!'/>
+      <Header title='Pedidos' subtitle='Acompanhe o pedido dos clientes!' />
       <Container>
         <OrdersBoard
           icon="🕑"
@@ -76,7 +79,7 @@ export function Orders() {
           onOrderStatusChange={handleOrderStatusChange}
         />
       </Container>
-      <Footer/>
+      <Footer />
     </>
   );
 }
