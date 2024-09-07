@@ -1,7 +1,7 @@
 import { Card, CardContent, CardFooter, CardHeader, Button } from './styles'
 import { Products } from '../../types/Products';
 import { formatCurrency } from '../../utils/formatCurrency';
-import { useCartStore } from '../store/useCartStore';
+import { useCartStore } from '../../store/useCartStore';
 
 export const CardComponent = ({
   _id,

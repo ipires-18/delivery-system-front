@@ -1,6 +1,6 @@
 import React from 'react';
 import { formatCurrency } from "../../utils/formatCurrency";
-import { useCartStore } from "../store/useCartStore";
+import { useCartStore } from "../../store/useCartStore";
 import {
   CartContainer,
   EmptyCartMessage,
@@ -19,6 +19,7 @@ import {
   Button,
   Wrapper
 } from './styles';
+import { Ingredients } from '../../types/Ingredients';
 
 export const Cart = () => {
   const { cartItems, addToCart, removeFromCart } = useCartStore();
@@ -47,7 +48,7 @@ export const Cart = () => {
                 <ItemPrice>Preço: {formatCurrency(product.price)}</ItemPrice>
                 <ItemQuantity>Quantidade: {quantity}</ItemQuantity>
                 <IngredientsList>
-                  Ingredientes: {product.ingredients.map((ingredient) => (
+                  Ingredientes: {product.ingredients.map((ingredient:Ingredients) => (
                     <Ingredient key={ingredient._id}>
                       {ingredient.icon} {ingredient.name}
                     </Ingredient>

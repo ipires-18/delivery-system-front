@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalFooter, Button } from './styles';
-import { useCartStore } from '../store/useCartStore';
+import { useCartStore } from '../../store/useCartStore';
 import { Input } from '../Input/Input';
 import { api } from '../../service/api';
 import {toast} from 'react-toastify';

@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { Products } from '../../types/Products';
+import { Products } from '../types/Products';
 
 interface CartItemProps {
   product: Products;
